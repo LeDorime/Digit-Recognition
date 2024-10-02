@@ -23,17 +23,17 @@ model.fit(x_train, y_train, epochs=3)
 
 loss, accuracy = model.evaluate(x_test, y_test)
 
-print(loss)
-print(accuracy)
+print(f"The loss for this model is {loss}")
+print(f"The accuracy for this model is {accuracy}")
 
-for i in range(1,11):
+for i in range(1, 10):
     img = cv2.imread(f"{i}.png")[:,:,0]
     img = np.invert(np.array([img]))
     prediction = model.predict(img)
     print("--------------")
-    print(i)
-    print(f"prediction is : {np.argmax(prediction)}")
-    print("--------------")
+    print(f"The model predicts that the number is: {np.argmax(prediction)}")
+    print(f"The correct number is {i}")
+    print("--------------\n")
     plt.imshow(img[0],cmap=plt.cm.binary)
     plt.show()
 

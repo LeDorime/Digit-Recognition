@@ -13,8 +13,7 @@ The system leverages machine learning algorithms to recognize hand-written digit
 ## Technologies Used
 
 - **Python**: The core language used for this project.
-- **TensorFlow/Keras**: Used for building and training the neural network model.
+- **TensorFlow**: Used for building and training the neural network model.
 - **NumPy**: For numerical operations.
 - **Matplotlib**: For visualizing training progress and results.
-- **Pillow**: For image preprocessing and manipulation.
 - **MNIST Dataset**: Standard dataset used for training and testing the number recognition model.
