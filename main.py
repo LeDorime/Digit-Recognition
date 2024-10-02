@@ -1,3 +1,6 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
 import tensorflow as tf
 
 # importing a dataset
@@ -16,9 +19,23 @@ model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
 
 model.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])
 
-model.fit(x_train, y_train, epochs=4)
+model.fit(x_train, y_train, epochs=3)
 
 loss, accuracy = model.evaluate(x_test, y_test)
 
 print(loss)
 print(accuracy)
+
+for i in range(1,11):
+    img = cv2.imread(f"{i}.png")[:,:,0]
+    img = np.invert(np.array([img]))
+    prediction = model.predict(img)
+    print("--------------")
+    print(i)
+    print(f"prediction is : {np.argmax(prediction)}")
+    print("--------------")
+    plt.imshow(img[0],cmap=plt.cm.binary)
+    plt.show()
+
+
+
