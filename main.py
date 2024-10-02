@@ -21,4 +21,4 @@ model.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['
 
 model.fit(x_train, y_train, epochs=3)
 
-model.save('test.model')
+model.save('test.keras')
