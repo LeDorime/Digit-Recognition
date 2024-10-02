@@ -19,7 +19,7 @@ model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
 
 model.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])
 
-model.fit(x_train, y_train, epochs=3)
+model.fit(x_train, y_train, epochs=4)
 
 loss, accuracy = model.evaluate(x_test, y_test)
 
@@ -27,7 +27,7 @@ print(f"The loss for this model is {loss}")
 print(f"The accuracy for this model is {accuracy}")
 
 for i in range(1, 10):
-    img = cv2.imread(f"{i}.png")[:,:,0]
+    img = cv2.imread(f"digits/{i}.png")[:,:,0]
     img = np.invert(np.array([img]))
     prediction = model.predict(img)
     print("--------------")
