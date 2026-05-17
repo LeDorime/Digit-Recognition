@@ -1,19 +1,44 @@
-# Number Recognition Python Script
+# Handwritten Digit Recognition
 
-This project demonstrates the implementation of a number recognition system using Python. 
-The system leverages machine learning algorithms to recognize hand-written digits from images, using the popular MNIST dataset for training and testing.
+Neural network trained on MNIST achieving **97% classification accuracy**, with a live inference module for custom handwritten input images.
 
-## Features
+---
 
-- **Image Preprocessing**: Converts images of handwritten digits into a format suitable for machine learning.
-- **Model Training**: Trains a neural network using the MNIST dataset.
-- **Prediction**: Recognizes hand-written digits from user-provided images.
-- **Evaluation**: Evaluates the model's performance using accuracy, precision, and recall metrics.
+## How it works
 
-## Technologies Used
+1. Loads and normalizes the MNIST dataset (70,000 samples, 28×28 grayscale images)
+2. Trains a fully-connected neural network using TensorFlow/Keras
+3. Evaluates against the 10,000-sample test set
+4. Runs inference on custom digit images from the `digits/` folder
 
-- **Python**: The core language used for this project.
-- **TensorFlow**: Used for building and training the neural network model.
-- **NumPy**: For numerical operations.
-- **Matplotlib**: For visualizing training progress and results.
-- **MNIST Dataset**: Standard dataset used for training and testing the number recognition model.
+## Model architecture
+
+```
+Input (28×28) → Flatten → Dense(128, ReLU) → Dense(128, ReLU) → Dense(10, Softmax)
+```
+
+Compiled with Adam optimizer and sparse categorical crossentropy loss. Trained for 4 epochs.
+
+## Results
+
+| Metric | Value |
+|--------|-------|
+| Test accuracy | **97%** |
+| Training samples | 60,000 |
+| Test samples | 10,000 |
+
+## Setup
+
+```bash
+pip install tensorflow opencv-python numpy matplotlib
+```
+
+```bash
+python main.py
+```
+
+Custom digit images go in the `digits/` folder, named `1.png` through `9.png` (white digit on black background).
+
+## Stack
+
+Python · TensorFlow · Keras · NumPy · OpenCV · Matplotlib · MNIST
